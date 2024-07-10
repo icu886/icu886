@@ -1,0 +1,38 @@
+name: Deploy Vite App to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # 你的默认分支名称，如果是其他名称请修改
+  # 你可以根据需要添加其他触发条件
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest # 运行在Ubuntu虚拟环境
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2 # 检出代码到工作目录
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18' # 你可以设置你需要的Node.js版本
+
+      - name: Install dependencies
+        run: npm install # 安装项目依赖
+
+      - name: Run Vite build
+        run: npm run build # 运行Vite打包命令，确保在package.json中有"build"脚本
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: pages # 部署到pages分支
+          folder: dist # Vite输出的静态文件目录，通常是dist
+          clean: true # 清理目标分支上的旧文件
+          token: ${{ secrets.deploy_page }} # 使用GitHub提供的秘钥
