@@ -1,38 +1,51 @@
-name: Deploy Vite App to GitHub Pages
+# 将静态内容部署到 GitHub Pages 的简易工作流程
+name: Deploy App
 
 on:
+  # 仅在推送到默认分支时运行。
   push:
-    branches:
-      - main # 你的默认分支名称，如果是其他名称请修改
-  # 你可以根据需要添加其他触发条件
+    branches: ['main']
+
+  # 这个选项可以使你手动在 Action tab 页面触发工作流
+  workflow_dispatch:
+
+# 设置 GITHUB_TOKEN 的权限，以允许部署到 GitHub Pages。
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 允许一个并发的部署
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest # 运行在Ubuntu虚拟环境
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-
+  # 单次部署的工作描述
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout source code
-        uses: actions/checkout@v2 # 检出代码到工作目录
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
         with:
-          node-version: '22' # 你可以设置你需要的Node.js版本
-
+          node-version: 20
+          cache: 'npm'
       - name: Install dependencies
-        run: npm install # 安装项目依赖
-
-      - name: Run Vite build
-        run: npm run build # 运行Vite打包命令，确保在package.json中有"build"脚本
-
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.4
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          branch: pages # 部署到pages分支
-          folder: dist # Vite输出的静态文件目录，通常是dist
-          clean: true # 清理目标分支上的旧文件
-          token: ${{ secrets.DELPOY_PAGE }} # 使用GitHub提供的秘钥
+          # Upload dist folder
+          path: './dist'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
