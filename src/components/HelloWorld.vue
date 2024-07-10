@@ -36,6 +36,6 @@ const count = ref(0)
 
 <style scoped>
 .read-the-docs {
-  color: #886;
+  color: #996;
 }
 </style>
