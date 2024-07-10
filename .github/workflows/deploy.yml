@@ -35,4 +35,4 @@ jobs:
           branch: pages # 部署到pages分支
           folder: dist # Vite输出的静态文件目录，通常是dist
           clean: true # 清理目标分支上的旧文件
-          token: ${{ secrets.deploy_page }} # 使用GitHub提供的秘钥
+          token: ${{ secrets.DELPOY_PAGE }} # 使用GitHub提供的秘钥
