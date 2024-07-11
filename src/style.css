@@ -13,15 +13,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
   margin: 0;
   display: flex;
@@ -60,19 +51,19 @@ button:focus-visible {
 
 #app {
   max-width: 1280px;
+  min-width: 96vw;
+  min-height: 92vh;;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: azure;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
+  }  
   button {
     background-color: #f9f9f9;
   }
