@@ -42,7 +42,7 @@ const tabs: TabCompoentMap = {
   border-top-right-radius: 3px;
   border: 1px solid #ccc;
   cursor: pointer;
-  background: #efe;
+  background: #eee;
   margin-right: 10px;
 }
 
