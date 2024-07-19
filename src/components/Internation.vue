@@ -23,7 +23,7 @@ async function readCompaniesFromTOML(filePath: string): Promise<Company[]> {
 }
 
 onMounted(() => {
-    readCompaniesFromTOML('/src/companies.toml')
+    readCompaniesFromTOML('/companies.toml')
         .then(data => companies.value = data)
         .catch(error => console.error(error));
     console.log(`the component is now mounted.`)
