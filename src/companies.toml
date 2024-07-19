@@ -1,0 +1,11 @@
+[[companies]]
+name = "Karma"
+province = "shannxi"
+city = "xian"
+address = "shanxi-xian"
+bigThing = ["aaa", "bbb"]
+
+[[companies]]
+name = "Karma-A"
+province = "shannxi"
+city = "xian"
