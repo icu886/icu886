@@ -1,4 +1,4 @@
-export type Company = {
+export type CompanyType = {
   name: string;
   provience: string;
   city: string;

@@ -1,17 +1,12 @@
 <script setup lang="ts">
-import Home from './components/Home.vue'
-import Internation from './components/Internation.vue';
-import { ref } from 'vue'
+import TabContent from './components/TabContent.vue';
+import { ref } from 'vue';
 
-interface TabCompoentMap {
-  [tab: string]: Object;
-}
+const currentTab = ref('Chinese')
 
-const currentTab = ref('国内')
-
-const tabs: TabCompoentMap = {
-  '国内': Home,
-  '国外': Internation
+const tabs: { [tab: string]: string } = {
+  'Chinese': '/ChineseCompanies.toml',
+  'Foreign': '/ForeignCompanies.toml'
 }
 </script>
 <template>
@@ -20,7 +15,7 @@ const tabs: TabCompoentMap = {
       @click="currentTab = tab as string">
       {{ tab }}
     </button>
-    <component :is="tabs[currentTab]" class="tab"></component>
+    <TabContent :filePath="tabs[currentTab]"></TabContent>
   </div>
 </template>
 
@@ -52,10 +47,5 @@ const tabs: TabCompoentMap = {
 
 .tab-button.active {
   background: #aea;
-}
-
-.tab {
-  border: 1px solid #ccc;
-  padding: 10px;
 }
 </style>
