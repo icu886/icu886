@@ -3,9 +3,9 @@ name = "Karma"
 province = "shannxi"
 city = "xian"
 address = "shanxi-xian"
-bigThing = ["aaa", "bbb"]
 
 [[companies]]
 name = "Karma-B"
 province = "shannxi"
 city = "xian"
+bigThing = ["111", "222"]
