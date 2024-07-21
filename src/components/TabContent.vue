@@ -24,14 +24,22 @@ watch(() => props.filePath, async (newFilePath, _oldFilePath) => {
 
 </script>
 <template>
-    <div class="companyWrapper" v-for="company in companies">
+    <div class="tabContent" v-for="company in companies">
         <Company :company="company"></Company>
     </div>
 </template>
 
 <style scoped>
-.companyWrapper {
-    margin: 0;
+.tabContent {
+    margin: 20px 0;
     padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    border-color: #aca;
+    border-style: groove;
+}
+
+.tabContent:hover {
+    border-color: #cac;
 }
 </style>

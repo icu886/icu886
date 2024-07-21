@@ -1,6 +1,6 @@
 export type CompanyType = {
   name: string;
-  provience: string;
+  province: string;
   city: string;
   address?: string;
   bigThing?: string[];

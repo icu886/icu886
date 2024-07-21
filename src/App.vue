@@ -2,11 +2,11 @@
 import TabContent from './components/TabContent.vue';
 import { ref } from 'vue';
 
-const currentTab = ref('Chinese')
+const currentTab = ref('国内')
 
 const tabs: { [tab: string]: string } = {
-  'Chinese': '/ChineseCompanies.toml',
-  'Foreign': '/ForeignCompanies.toml'
+  '国内': '/ChineseCompanies.toml',
+  '国外': '/ForeignCompanies.toml'
 }
 </script>
 <template>
