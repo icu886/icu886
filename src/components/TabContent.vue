@@ -39,7 +39,10 @@ watch(() => props.filePath, async (newFilePath, _oldFilePath) => {
     border-style: groove;
 }
 
+.tabContent:active,
+.tabContent:focus,
 .tabContent:hover {
     border-color: #cac;
+    cursor: pointer;
 }
 </style>
