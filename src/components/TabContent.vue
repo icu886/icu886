@@ -31,8 +31,8 @@ watch(() => props.filePath, async (newFilePath, _oldFilePath) => {
 
 <style scoped>
 .tabContent {
-    margin: 20px 0;
-    padding: 10px;
+    margin: 20px 10px;
+    padding: 10px 5px;
     border: 1px solid #ccc;
     border-radius: 3px;
     border-color: #aca;

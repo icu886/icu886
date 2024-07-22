@@ -15,6 +15,9 @@ const tabs: { [tab: string]: string } = {
       @click="currentTab = tab as string">
       {{ tab }}
     </button>
+  </div>
+
+  <div class="tabContentWrapper">
     <TabContent :filePath="tabs[currentTab]"></TabContent>
   </div>
 </template>
@@ -22,13 +25,16 @@ const tabs: { [tab: string]: string } = {
 <style scoped>
 .tabWrapper {
   font-family: sans-serif;
-  border: 0px none #eee;
-  border-radius: 2px;
   padding: 0;
   margin-top: 1em;
   margin-bottom: 10px;
   user-select: none;
   overflow-x: auto;
+}
+
+.tabContentWrapper {
+  height: 97vh;
+  overflow-y: auto;
 }
 
 .tab-button {
