@@ -33,7 +33,7 @@ const tabs: { [tab: string]: string } = {
 }
 
 .tabContentWrapper {
-  height: 97vh;
+  height: 90vh;
   overflow-y: auto;
 }
 
